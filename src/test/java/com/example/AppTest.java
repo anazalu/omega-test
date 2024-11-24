@@ -17,9 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import dev.failsafe.internal.util.Assert;
-
-
 public class AppTest {
     private static WebDriver driver = null;
     private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -30,6 +27,7 @@ public class AppTest {
         ChromeOptions options = new ChromeOptions();
         // options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
         driver.get("https://omega-vismatestingapp.azurewebsites.net/");
     }
 
@@ -39,17 +37,8 @@ public class AppTest {
         assertTrue(actualTitle.contains("ojumu port"), "Title mismatch");
     }
 
-    private void hamburgerClick(String buttonText) {
-        WebElement hamburgerSpan = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a.p-menubar-button")));
-        hamburgerSpan.click();
-        WebElement veidotJaunuSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), '" + buttonText + "')]")));
-        veidotJaunuSpan.click();
-
-    }
-
     @Test
     public void testCreateAndDeleteEvent() {
-        // hamburgerClick("Veidot");
         WebElement veidotJaunuSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'Veidot jaunu')]")));
         veidotJaunuSpan.click();
         WebElement virsrakstsLabel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(), 'Virsraksts')]")));
@@ -63,7 +52,6 @@ public class AppTest {
         textInput.sendKeys("Text1");
         WebElement saglabatButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-pc-name='button']")));
         saglabatButton.click();
-        // hamburgerClick("Sākums");
         WebElement sakumsSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'kums')]")));
         sakumsSpan.click();
         WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
