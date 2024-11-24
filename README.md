@@ -29,7 +29,11 @@ Tehnoloģijas/valodas/rīkus var izvēlēties pēc saviem ieskatiem.
 ## Testu palaišana:
 
 (Nepieciešams Maven)
-
+- Visi testi:
 ```
 mvn test
+```
+- Atsevišķi testu faili:
+```
+mvn test -Dtest=ApiTest
 ```
