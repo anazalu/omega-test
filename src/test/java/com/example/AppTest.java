@@ -28,7 +28,7 @@ public class AppTest {
     public static void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.get("https://omega-vismatestingapp.azurewebsites.net/");
     }
@@ -49,7 +49,9 @@ public class AppTest {
 
     @Test
     public void testCreateAndDeleteEvent() {
-        hamburgerClick("Veidot");
+        // hamburgerClick("Veidot");
+        WebElement veidotJaunuSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'Veidot jaunu')]")));
+        veidotJaunuSpan.click();
         WebElement virsrakstsLabel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(), 'Virsraksts')]")));
         assertEquals(virsrakstsLabel.getText(), "Virsraksts:");
         WebElement titleInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("title")));
@@ -61,7 +63,9 @@ public class AppTest {
         textInput.sendKeys("Text1");
         WebElement saglabatButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-pc-name='button']")));
         saglabatButton.click();
-        hamburgerClick("Sākums");
+        // hamburgerClick("Sākums");
+        WebElement sakumsSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'kums')]")));
+        sakumsSpan.click();
         WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
             "//div[@class='title' and text()='" + title + "']/following-sibling::div[@class='buttons']//button"
         )));
