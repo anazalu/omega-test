@@ -1,39 +1,20 @@
 # Omega-test
 
-## Mērķis:
+## Manuālo testu pārskats:
+https://docs.google.com/document/d/1EpmJKQKN2E691fSuPNqmfEovVwBCx8Bh6gmhr1pHRuo/edit?usp=sharing 
 
-nodrošināt, ka šī platforma ir:
-- droša 
-- uzticama 
-- patīkama lietošanai 
-
-## Uzdevumi:
-
-1. Veikt manuālo aplikācijas testu un aprakstīt testēšanas rezultātus.
-
-2. Identificēt svarīgākos testēšanas scenārijus.
-
-3. Uzrakstīt automatizētos testus 2-3 svarīgākajiem scenārijiem.
-Tehnoloģijas/valodas/rīkus var izvēlēties pēc saviem ieskatiem.
-
-4. Veikt API validācijas testus tiem endpointiem, kuri ir aprakstīti swagerī: 
-
-- Vismaz 5 testpiemēri POST pieprasījumam
-
-- 2 testpiemēri DELETE pieprasījumam + paskaidrojums, kā tika verificēts, ka dati tika izdzēsti
-
-### Papilduzdevums:
-
-2-3 ieteikumi lietotāja pieredzes uzlabojumiem aplikācijā.
-
-## Testu palaišana:
+## Automatizēto testu palaišana:
 
 (Nepieciešams Maven)
 - Visi testi:
 ```
 mvn test
 ```
-- Atsevišķi testu faili:
+- Pa vienam testu failam:
 ```
 mvn test -Dtest=ApiTest
+```
+- Pa vienam scenārijam:
+```
+mvn test -Dtest=ApiTest#deleteEventIncorrectEndpoint test
 ```
