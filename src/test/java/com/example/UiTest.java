@@ -45,11 +45,11 @@ public class UiTest {
         assertEquals(virsrakstsLabel.getText(), "Virsraksts:");
         WebElement titleInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("title")));
         titleInput.clear();
-        String title = "Title1";
+        String title = "Mans jaunais virsraksts";
         titleInput.sendKeys(title);
         WebElement textInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("text")));
         textInput.clear();
-        textInput.sendKeys("Text1");
+        textInput.sendKeys("Mans jaunais teksts");
         WebElement saglabatButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-pc-name='button']")));
         saglabatButton.click();
         WebElement sakumsSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'kums')]")));
