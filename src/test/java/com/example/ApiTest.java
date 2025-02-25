@@ -57,7 +57,7 @@ public class ApiTest {
         assertEquals(404, responseDeleteEvent.getStatusCode(),
                 "Unexpected result for DELETE request with incorrect ID type.");
     }
-
+/* 
     static Stream<String> provideInvalidRequestBodies() {
         return Stream.of(
                 """
@@ -73,9 +73,9 @@ public class ApiTest {
                 }
                 """);
     }
-
+*/
     @ParameterizedTest
-    @MethodSource("provideInvalidRequestBodies")
+    @MethodSource("com.example.TestData#provideInvalidRequestBodies")
     public void postRequestWithMissingData(String requestBody) {
         given()
                 .header("Content-Type", "application/json")
