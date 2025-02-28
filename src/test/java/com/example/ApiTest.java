@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -57,25 +56,9 @@ public class ApiTest {
         assertEquals(404, responseDeleteEvent.getStatusCode(),
                 "Unexpected result for DELETE request with incorrect ID type.");
     }
-/* 
-    static Stream<String> provideInvalidRequestBodies() {
-        return Stream.of(
-                """
-                {
-                    "targetDate": "2024-12-29",
-                    "text": "Text content without title"
-                }
-                """,
-                """
-                {
-                    "title": "Title with missing text",
-                    "targetDate": "2024-12-29"
-                }
-                """);
-    }
-*/
+
     @ParameterizedTest
-    @MethodSource("com.example.TestData#provideInvalidRequestBodies")
+    @MethodSource("com.example.TestDataOm#provideInvalidRequestBodies")
     public void postRequestWithMissingData(String requestBody) {
         given()
                 .header("Content-Type", "application/json")
